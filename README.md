@@ -43,7 +43,7 @@ Returns an element or group of elements depending on selector.
 Applies event function on an element(s).
 * **el**: Element (or group of elements) to have event applied on.
 * **name**: Name of element (`Without 'on'!`).
-* **func**: A function that is executes on current event.
+* **func**: A function that is executed on current event.
 
 ##### ModalJS.init(props)
 Initializes modal with default properties.
