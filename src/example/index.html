@@ -28,12 +28,26 @@
             margin-bottom: 50px;
         }
 
+        pre {
+            display: inline-block;
+            text-align: left;
+            font-size: 11px;
+            line-height: 1.5;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: white;
+            border-radius: 3px;
+            border: 2px solid #707FA8;
+            box-shadow: 0 0 15px #ccc inset;
+        }
+
         body > input[type="button"] {
             border: 0px solid transparent;
             padding: 13px 21px;
             background: #C7D7FF;
             color: #424C69;
             border-radius: 2px;
+            font-family: sans-serif;
             font-weight: 600;
             cursor: pointer;
             outline: none;
@@ -54,10 +68,30 @@
 </head>
 <body>
 
-<h1>ModalJS.</h1>
+<h1>Modal.js.</h1>
 <h3>Enjoy experience with custom modals.</h3>
 
 <input id="runmodaljsa" type="button" value="Open modal, now!">
+<br>
+
+
+<pre style="background:#fff;color:#000"><span style="color:#3a4a64">&lt;<span style="color:#3a4a64">input</span> <span style="color:#3a4a64">id</span>=<span style="color:#409b1c">"runmodaljsa"</span> <span style="color:#3a4a64">type</span>=<span style="color:#409b1c">"button"</span> <span style="color:#3a4a64">value</span>=<span style="color:#409b1c">"Open modal, now!"</span>></span>
+&lt;<span style="color:#3b5bb5">script</span>>
+ModalJS.addEvent(
+    runmodaljsa, <span style="color:#409b1c">'click'</span>,
+    <span style="color:#ff7800">function</span>()
+    {
+        ModalJS.show({
+            top: <span style="color:#409b1c">'Modal title'</span>,
+            middle: <span style="color:#409b1c">'Modal body&lt;br>with more lines.'</span>,
+            transition: <span style="color:#409b1c">'normal'</span>
+        });
+    }
+);
+&lt;/<span style="color:#3b5bb5">script</span>>
+</pre>
+
+
 <br><br>
 Transition:<br>
 <input id="runmodaljsb" type="button" value="fast">
@@ -82,7 +116,8 @@ ModalJS.addEvent(
     {
         ModalJS.show({
             top: 'Modal title',
-            middle: 'Modal body<br>with more lines.'
+            middle: 'Modal body<br>with more lines.',
+            transition: 'normal'
         });
     }
 );
