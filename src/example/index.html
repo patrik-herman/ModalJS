@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ModalJS example</title>
+    <meta charset="utf-8">
+    <!-- Open Sans from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <style>
+		body {
+            background: #8599CD;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            line-height: 1.5;
+		}
+
+        body > input[type="button"] {
+            border: 0px solid transparent;
+            padding: 8px 17px;
+            background: #C7D7FF;
+            color: #424C69;
+            border-radius: 2px;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            margin: 3px 0 7px 0;
+
+            transition: all 0.1s;
+            -webkit-transition: all 0.1s;
+            -moz-transition: all 0.1s;
+            -ms-transition: all 0.1s;
+            -o-transition: all 0.1s;
+        }
+        body > input[type="button"]:hover {
+            background: #5E6E98;
+            color: white;
+        }
+    </style>
+    <link rel="stylesheet" href="../Modal.css">
+</head>
+<body>
+
+<input id="runmodaljsa" type="button" value="Open modal, now!">
+<br><br>
+Transition:<br>
+<input id="runmodaljsb" type="button" value="fast">
+<input id="runmodaljsc" type="button" value="normal">
+<input id="runmodaljsd" type="button" value="slow">
+<br>
+Mono:<br>
+<input id="runmodaljse" type="button" value="false">
+<input id="runmodaljsf" type="button" value="true">
+<br>
+Background:<br>
+<input id="runmodaljsg" type="button" value="false">
+<input id="runmodaljsh" type="button" value="true">
+<br>
+
+
+<script src="../Modal.js"></script>
+<script>
+ModalJS.addEvent(
+    runmodaljsa, 'click',
+    function()
+    {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.'
+        });
+    }
+);
+
+ModalJS.addEvent(
+    runmodaljsb, 'click',
+    function()
+    {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            transition: 'fast'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsc, 'click',
+    function()
+    {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            transition: 'normal'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsd, 'click',
+    function()
+    {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            transition: 'slow'
+        });
+    }
+);
+
+ModalJS.addEvent(
+    runmodaljse, 'click',
+    function()
+    {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            mono: false
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsf, 'click',
+    function()
+    {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            mono: true
+        });
+    }
+);
+
+ModalJS.addEvent(
+    runmodaljsg, 'click',
+    function()
+    {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            background: false
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsh, 'click',
+    function()
+    {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            background: true
+        });
+    }
+);
+</script>
+
+</body>
+</html>
