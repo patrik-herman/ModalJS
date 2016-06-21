@@ -79,9 +79,9 @@
 &lt;<span style="color:#3b5bb5">script</span>>
 ModalJS.addEvent(
     runmodaljsa, <span style="color:#409b1c">'click'</span>,
-    <span style="color:#ff7800">function</span>()
-    {
+    <span style="color:#ff7800">function</span>() {
         ModalJS.show({
+            type: <span style="color:#409b1c">'modal'</span>,
             top: <span style="color:#409b1c">'Modal title'</span>,
             middle: <span style="color:#409b1c">'Modal body&lt;br>with more lines.'</span>,
             transition: <span style="color:#409b1c">'normal'</span>
@@ -93,6 +93,13 @@ ModalJS.addEvent(
 
 
 <br><br>
+Type:<br>
+<input id="runmodaljsv" type="button" value="modal">
+<input id="runmodaljsw" type="button" value="success">
+<input id="runmodaljsx" type="button" value="alert">
+<input id="runmodaljsy" type="button" value="warning">
+<input id="runmodaljsz" type="button" value="error">
+<br>
 Transition:<br>
 <input id="runmodaljsb" type="button" value="fast">
 <input id="runmodaljsc" type="button" value="normal">
@@ -106,15 +113,77 @@ Background:<br>
 <input id="runmodaljsg" type="button" value="false">
 <input id="runmodaljsh" type="button" value="true">
 <br>
+Size:<br>
+<input id="runmodaljsi" type="button" value="small">
+<input id="runmodaljsj" type="button" value="medium">
+<input id="runmodaljsk" type="button" value="big">
+<br>
 
 
 <script src="../Modal.js"></script>
 <script>
 ModalJS.addEvent(
-    runmodaljsa, 'click',
-    function()
-    {
+    runmodaljsv, 'click',
+    function() {
         ModalJS.show({
+			type: 'modal',
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            transition: 'normal'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsw, 'click',
+    function() {
+        ModalJS.show({
+			type: 'success',
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            transition: 'normal'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsx, 'click',
+    function() {
+        ModalJS.show({
+			type: 'alert',
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            transition: 'normal'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsy, 'click',
+    function() {
+        ModalJS.show({
+			type: 'warning',
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            transition: 'normal'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsz, 'click',
+    function() {
+        ModalJS.show({
+			type: 'error',
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            transition: 'normal'
+        });
+    }
+);
+
+
+ModalJS.addEvent(
+    runmodaljsa, 'click',
+    function() {
+        ModalJS.show({
+			type: 'modal',
             top: 'Modal title',
             middle: 'Modal body<br>with more lines.',
             transition: 'normal'
@@ -124,8 +193,7 @@ ModalJS.addEvent(
 
 ModalJS.addEvent(
     runmodaljsb, 'click',
-    function()
-    {
+    function() {
         ModalJS.show({
             top: 'Modal title',
             middle: 'Modal body<br>with more lines.',
@@ -135,8 +203,7 @@ ModalJS.addEvent(
 );
 ModalJS.addEvent(
     runmodaljsc, 'click',
-    function()
-    {
+    function() {
         ModalJS.show({
             top: 'Modal title',
             middle: 'Modal body<br>with more lines.',
@@ -146,8 +213,7 @@ ModalJS.addEvent(
 );
 ModalJS.addEvent(
     runmodaljsd, 'click',
-    function()
-    {
+    function() {
         ModalJS.show({
             top: 'Modal title',
             middle: 'Modal body<br>with more lines.',
@@ -158,8 +224,7 @@ ModalJS.addEvent(
 
 ModalJS.addEvent(
     runmodaljse, 'click',
-    function()
-    {
+    function() {
         ModalJS.show({
             top: 'Modal title',
             middle: 'Modal body<br>with more lines.',
@@ -169,8 +234,7 @@ ModalJS.addEvent(
 );
 ModalJS.addEvent(
     runmodaljsf, 'click',
-    function()
-    {
+    function() {
         ModalJS.show({
             top: 'Modal title',
             middle: 'Modal body<br>with more lines.',
@@ -181,8 +245,7 @@ ModalJS.addEvent(
 
 ModalJS.addEvent(
     runmodaljsg, 'click',
-    function()
-    {
+    function() {
         ModalJS.show({
             top: 'Modal title',
             middle: 'Modal body<br>with more lines.',
@@ -192,12 +255,42 @@ ModalJS.addEvent(
 );
 ModalJS.addEvent(
     runmodaljsh, 'click',
-    function()
-    {
+    function() {
         ModalJS.show({
             top: 'Modal title',
             middle: 'Modal body<br>with more lines.',
             background: true
+        });
+    }
+);
+
+ModalJS.addEvent(
+    runmodaljsi, 'click',
+    function() {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            size: 'small'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsj, 'click',
+    function() {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            size: 'medium'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsk, 'click',
+    function() {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            size: 'big'
         });
     }
 );
