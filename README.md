@@ -27,15 +27,20 @@ ModalJS.show({
 * mono: false, true
 * background: false, true
 * size: small, medium, big
+* position: stickedToTop, top, middle, bottom, stickedToBottom
 
 ```javascript
 ModalJS.show({
-    type: 'error',
-    top: 'ERROR!!',
-    middle: 'You did something wrong. Go and repair it!',
-    transition: 'normal',
-    mono: true,
-    size: 'medium'
+    top: 'To install our product you need to agree with our example license.',
+    middle: 'The MIT License (MIT)<br>Copyright (c) &lt;year&gt; &lt;copyright holders&gt;<br><br>License...',
+    size: 'big',
+    transition: 'slow',
+    confirm: {
+        text: 'I agree.',
+        click: function() {
+            alert('Thank you!');
+        }
+    }
 });
 ```
 
