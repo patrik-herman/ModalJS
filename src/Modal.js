@@ -34,6 +34,7 @@ var ModalJS = {
 			middle: '#modaljs-middle',
 			bottom: '#modaljs-bottom',
 			bottomCancel: '#modaljs-bottom-cancel',
+			bottomConfirm: '#modaljs-bottom-confirm',
 			transitionType: '#modaljs-transitionType'
 		};
 		return ModalJS.sel(modal[type]);
@@ -50,6 +51,18 @@ var ModalJS = {
 		'medium',
 		'big'
 	],
+	monoTypes: [
+		'mono',
+		'colored'
+	],
+	positionTypes: [
+		'stickedToTop',
+		'top',
+		'middle',
+		'bottom',
+		'stickedToBottom'
+	],
+	confirmFn: function() {},
 	isShown: function()
 	{
 		return modaljs.modal('modals').style.display != 'none';
@@ -92,7 +105,7 @@ var ModalJS = {
 	init: function(props)
 	{
 		
-		var modalHTML = '<div id="modaljs-modals" style="opacity:0;display:none"><div id="modaljs-bg"></div><div id="modaljs-modal" class="modaljs-normal"><div id="modaljs-top"></div><div id="modaljs-top-cancel"></div><div id="modaljs-middle"></div><div id="modaljs-bottom"><input type="button" id="modaljs-bottom-cancel" value="Cancel"></div><input type="hidden" id="modaljs-transitionType"></div></div>';
+		var modalHTML = '<div id="modaljs-modals" style="opacity:0;display:none"><div id="modaljs-bg"></div><div id="modaljs-modal" class="modaljs-normal"><div id="modaljs-top"></div><div id="modaljs-top-cancel"></div><div id="modaljs-middle"></div><div id="modaljs-bottom"><input type="button" id="modaljs-bottom-cancel" value="Cancel"><input type="button" id="modaljs-bottom-confirm" value="Ok"></div><input type="hidden" id="modaljs-transitionType"></div></div>';
 		document.body.insertAdjacentHTML('beforeend', modalHTML);
 		
 		var that = this;
@@ -105,6 +118,16 @@ var ModalJS = {
 		{
 			that.hideModal();
 		});
+
+		this.addEvent(
+			this.modal('bottomConfirm'),
+			'click',
+			function()
+			{
+				that.hideModal();
+				that.confirmFn();
+			}
+		);
 	},
 	show: function(props)
 	{
@@ -142,12 +165,12 @@ var ModalJS = {
 		};
 
 		var modals = this.modal('modals'),
-			modalsCN = modals.className,
-			modalsCNs = modalsCN.split(/\s+/).indexOf('colored') > -1, // contains 'colored'
+			confirm = this.modal('bottomConfirm'),
 			modalType = getProp(props, 'type', 'modal'),
-			isMono = getProp(props, 'mono'),
+			monoType = getProp(props, 'mono'),
 			isBG = getProp(props, 'background', true),
-			sizeType = getProp(props, 'size', 'small');
+			sizeType = getProp(props, 'size', 'small'),
+			positionType = getProp(props, 'position', 'middle');
 
 		// setting 'type'
 		if (!this.modalTypes.contains(modalType))
@@ -156,14 +179,12 @@ var ModalJS = {
 		modals.removeClasses(this.modalTypes);
 		modals.addClass(modalType);
 		
-		// setting 'mono'
-		if (modalsCNs && isMono)
-			modals.className 
-				= modalsCN
-					.replace(/\s*colored\s*/, '');
-		else if (!modalsCNs && !isMono)
-			modals.addClass('colored');
+		monoType = monoType ? 'mono' : 'colored';
+		if (!this.monoTypes.contains(monoType))
+			monoType = 'colored';
 
+		this.modal('modal').removeClasses(this.monoTypes);
+		this.modal('modal').addClass(monoType);
 		
 		// setting 'bg'
 		this.modal('bg').style.display 
@@ -176,6 +197,33 @@ var ModalJS = {
 			
 		this.modal('modal').removeClasses(this.sizeTypes);
 		this.modal('modal').addClass(sizeType);
+
+		// setting 'position'
+		if (!this.positionTypes.contains(positionType))
+			positionType = 'middle';
+			
+		this.modal('modal').removeClasses(this.positionTypes);
+		this.modal('modal').addClass(positionType);
+
+		// setting 'confirm'
+		confirm.style.display = 'none';
+		if (props.hasOwnProperty('confirm')
+			&& props.confirm.hasOwnProperty('text')
+			&& props.confirm.hasOwnProperty('click'))
+		{
+			var text = props.confirm.text,
+				click = props.confirm.click
+			if (typeof text == 'string'
+				&& typeof click == 'function')
+			{
+				confirm.style.display = 'inline-block';
+				text = text || 'Ok';
+
+				confirm.value = text;
+				confirm.focus();
+				this.confirmFn = click;
+			}
+		}
 			
 		
 		this.showModal(modals, this.modal('transitionType'));
@@ -190,13 +238,16 @@ var ModalJS = {
 
 		// setting up modal top position
 		this.modal('modal').style.margin = 
-			(-(this.modal('modal').offsetHeight/2)
-				- (
-					props.hasOwnProperty('offsetTop')
-							&& typeof props.offsetTop == 'number'
-						? props.offsetTop
-						: 0
-				)
+			(positionType == 'middle'
+				? (	-(this.modal('modal').offsetHeight/2)
+					- (
+						props.hasOwnProperty('offsetTop')
+								&& typeof props.offsetTop == 'number'
+							? props.offsetTop
+							: 0
+					)
+				) 
+				: '0'
 			)
 			+ 'px 0 0 '
 			+ (-(this.modal('modal').offsetWidth/2))
