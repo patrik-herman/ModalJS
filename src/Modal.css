@@ -55,6 +55,12 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
 }
+
+#modaljs-modal.stickedToTop {top: 0;}
+#modaljs-modal.top {top: 20px;}
+#modaljs-modal.bottom {top: auto; bottom: 20px;}
+#modaljs-modal.stickedToBottom {top: auto; bottom: 0;}
+
 #modaljs-modal.medium {width: 50%;}
 #modaljs-modal.big {width: 80%;}
 
@@ -62,9 +68,8 @@
     padding: 15px 20px;
 }
 
-/* 'colored' || '' */
-#modaljs-modals.colored #modaljs-top,
-#modaljs-modals.colored #modaljs-bottom {background: #eee;}
+#modaljs-modals #modaljs-top,
+#modaljs-modals #modaljs-bottom {background: #eee;}
 
 /* modal types */
 #modaljs-modals.success #modaljs-modal {background: rgb(98, 194, 79);}
@@ -93,8 +98,9 @@
 }
 #modaljs-top-cancel {
     position: absolute;
-    //top: 13px; right: 20px;
     top: -2px; right: 0;
+    margin: 15px 20px;
+    padding: 0 !important;
 }
 #modaljs-top-cancel:before {
     content: 'x';
@@ -118,15 +124,18 @@
 }
 #modaljs-middle {
     text-align: left;
+    padding: 15px 30px !important;
 }
 #modaljs-bottom {
     text-align: right;
     border-radius: 0 0 2px 2px;
 }
-#modaljs-bottom-cancel {
+#modaljs-bottom-cancel,
+#modaljs-bottom-confirm {
     border: 0px solid transparent;
     padding: 8px 17px;
-    background: #8599CD;
+    margin-left: 4px;
+    background: rgba(6, 6, 6, 0.2);
     color: white;
     border-radius: 2px;
     font-weight: 600;
@@ -139,16 +148,19 @@
     -ms-transition: all 0.1s;
     -o-transition: all 0.1s;
 }
-#modaljs-bottom-cancel:hover {
-    background: #5E6E98;
+#modaljs-bottom-confirm {
+    background: rgba(255, 255, 255, 0.6);
+    color: #333;
 }
+#modaljs-modals.modal #modaljs-bottom-confirm {color: white;}
 
-#modaljs-modals.success #modaljs-bottom-cancel,
-#modaljs-modals.alert #modaljs-bottom-cancel,
-#modaljs-modals.warning #modaljs-bottom-cancel,
-#modaljs-modals.error #modaljs-bottom-cancel {background: rgba(6, 6, 6, 0.2);}
+#modaljs-bottom-cancel:hover {background: rgba(6, 6, 6, 0.5);}
+#modaljs-bottom-confirm:hover {background: rgba(255, 255, 255, 0.9);}
 
-#modaljs-modals.success #modaljs-bottom-cancel:hover,
-#modaljs-modals.alert #modaljs-bottom-cancel:hover,
-#modaljs-modals.warning #modaljs-bottom-cancel:hover,
-#modaljs-modals.error #modaljs-bottom-cancel:hover {background: rgba(6, 6, 6, 0.5);}
+#modaljs-modals.modal #modaljs-bottom-cancel {background: #C1C1C1;}
+#modaljs-modals.modal #modaljs-bottom-confirm {background: #8599CD;}
+#modaljs-modals.modal #modaljs-bottom-cancel:hover {background: #777;}
+#modaljs-modals.modal #modaljs-bottom-confirm:hover {background: #5E6E98;}
+
+#modaljs-modal.mono #modaljs-top,
+#modaljs-modal.mono #modaljs-bottom {background: transparent;}
