@@ -12,7 +12,33 @@ ModalJS - Enjoy experience with custom modals.
   * Core library.
 * **Modal.css**
   * Additive CSS styles for custom modals.
-  
+
+# How to create a modal
+You can create a modal with `ModalJS.show` function:
+```javascript
+ModalJS.show({
+    top: 'Modal title.',
+    middle: 'Modal body.'
+});
+```
+`top` and `middle` are requred properties. You can also use some of list below:
+* type: modal, success, alert, warning, error
+* transition: fast, normal, slow
+* mono: false, true
+* background: false, true
+* size: small, medium, big
+
+```javascript
+ModalJS.show({
+    type: 'error',
+    top: 'ERROR!!',
+    middle: 'You did something wrong. Go and repair it!',
+    transition: 'normal',
+    mono: true,
+    size: 'medium'
+});
+```
+
 # ModalJS functions and variables
 > **Tip**: You can use `modaljs` or `ModalJS` variable.
 
