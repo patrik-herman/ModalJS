@@ -12,7 +12,7 @@
             font-size: 28px;
             line-height: 1.5;
             text-align: center;
-            padding: 20px 0;
+            padding: 20px 0 60px;
         }
 
         h1, h3 {
@@ -92,7 +92,11 @@ ModalJS.addEvent(
 </pre>
 
 
+<br>
+<input id="runmodaljsq" type="button" value="Example of custom error warning">
+<input id="runmodaljsr" type="button" value="Example of custom license modal">
 <br><br>
+Custom properties you can combine:<br><br>
 Type:<br>
 <input id="runmodaljsv" type="button" value="modal">
 <input id="runmodaljsw" type="button" value="success">
@@ -117,6 +121,13 @@ Size:<br>
 <input id="runmodaljsi" type="button" value="small">
 <input id="runmodaljsj" type="button" value="medium">
 <input id="runmodaljsk" type="button" value="big">
+<br>
+Position:<br>
+<input id="runmodaljsl" type="button" value="stickedToTop">
+<input id="runmodaljsm" type="button" value="top">
+<input id="runmodaljsn" type="button" value="middle">
+<input id="runmodaljso" type="button" value="bottom">
+<input id="runmodaljsp" type="button" value="stickedToBottom">
 <br>
 
 
@@ -291,6 +302,95 @@ ModalJS.addEvent(
             top: 'Modal title',
             middle: 'Modal body<br>with more lines.',
             size: 'big'
+        });
+    }
+);
+
+ModalJS.addEvent(
+    runmodaljsl, 'click',
+    function() {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            position: 'stickedToTop'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsm, 'click',
+    function() {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            position: 'top'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsn, 'click',
+    function() {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            position: 'middle'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljso, 'click',
+    function() {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            position: 'bottom'
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsp, 'click',
+    function() {
+        ModalJS.show({
+            top: 'Modal title',
+            middle: 'Modal body<br>with more lines.',
+            position: 'stickedToBottom'
+        });
+    }
+);
+
+ModalJS.addEvent(
+    runmodaljsq, 'click',
+    function() {
+        ModalJS.show({
+            type: 'error',
+            top: 'You need to install this and that!',
+            middle: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+            transition: 'normal',
+            size: 'big',
+            position: 'bottom',
+            confirm: {
+                text: 'I agree.',
+                click: function() {
+                    alert('Installing...');
+                    alert('Install successful!');
+                }
+            }
+        });
+    }
+);
+ModalJS.addEvent(
+    runmodaljsr, 'click',
+    function() {
+        ModalJS.show({
+            top: 'To install our product you need to agree with our example license.',
+            middle: 'The MIT License (MIT)<br>Copyright (c) &lt;year&gt; &lt;copyright holders&gt;<br><br>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br><br>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br><br>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br>',
+            size: 'big',
+            transition: 'slow',
+            confirm: {
+                text: 'I agree.',
+                click: function() {
+                    alert('Thank you!');
+                }
+            }
         });
     }
 );
