@@ -73,6 +73,7 @@ Returns element of modal depending on element:
 * middle
 * bottom
 * bottomCancel
+* bottomConfirm
 * transitionType
 
 ##### ModalJS.isShown()
