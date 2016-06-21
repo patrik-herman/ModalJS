@@ -21,7 +21,7 @@ ModalJS.show({
     middle: 'Modal body.'
 });
 ```
-`top` and `middle` are requred properties. You can also use some of list below:
+`top` and `middle` are required properties. You can also use some of list below:
 * type: modal, success, alert, warning, error
 * transition: fast, normal, slow
 * mono: false, true
@@ -43,6 +43,19 @@ ModalJS.show({
     }
 });
 ```
+
+# Custom `Array` and `Node` functions
+##### Array.prototype.contains(element)
+Returns true if array contains an element.
+* **element**: an element.
+
+##### Node.prototype.removeClasses(classes)
+Removes classses from node.
+* **classes**: array of strnigs representing classes themselves.
+
+##### Node.prototype.addClass(c)
+Adds class to an element.
+* **c**: class, a string.
 
 # ModalJS functions and variables
 > **Tip**: You can use `modaljs` or `ModalJS` variable.
